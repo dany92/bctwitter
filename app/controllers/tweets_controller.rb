@@ -12,11 +12,12 @@ class TweetsController < ApplicationController
 
 		@tweet= Tweet.new(tweet_params)
 		@tweet.user = current_user
-		@tweet.save	
-
 		@tweets=current_user.tweets
+			
 
-		flash.now[:success]="Tweet Created"
+		if @tweet.save
+			flash.now[:success]="Tweet Created"	
+		end
 		render 'new'	
 		
 	end
@@ -28,7 +29,7 @@ class TweetsController < ApplicationController
 	end
 
 	private
-	
+
 	def tweet_params
 		params.require(:tweet).permit(:content)
 	end
