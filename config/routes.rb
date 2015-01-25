@@ -8,6 +8,8 @@ Rails.application.routes.draw do
  resources :profiles
 
  resources :relationships, only: [:create]
+
+ get 'tags/:hash_tag_id', to: 'hashtags#show',as: :hash_tag
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
